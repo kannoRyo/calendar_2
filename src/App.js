@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Nav from './Nav'
@@ -11,20 +11,29 @@ const useStyles = makeStyles({
     gridTemplateRows: '60px 1fr'
   },
   nav:{
-    backgroundColor: '#FF7D7D',
   },
   board:{
-    backgroundColor: '#ABE7FF',
   }
 })
 
-
 const App= ()=> {
   const classes = useStyles()
+  const d =new Date()
+  const [year,setYear] = useState(d.getFullYear())
+  const [month,setMonth] = useState(d.getMonth())
+
+
   return (
     <div className={classes.app}>
       <Nav className={classes.nav} nav={classes.nav}/>
-      <CalendarBoard className={classes.board} board={classes.board}/>
+      <CalendarBoard 
+        className={classes.board} 
+        board={classes.board}
+        setYear={()=>setYear()}
+        setMonth={()=>setMonth()}
+        year={year}
+        month={month}
+      />
     </div>
   );
 }
