@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
+
 import Nav from './Nav'
 import CalendarBoard from './CalendarBoard'
 
@@ -24,6 +25,24 @@ const App= ()=> {
   const [year,setYear] = useState(d.getFullYear())
   const [month,setMonth] = useState(d.getMonth())
 
+  const previousMonth = ()=>{
+    if(month === 0){
+      setMonth(11)
+      setYear(year - 1)
+    }else{
+      setMonth(month - 1)
+    }
+  }
+
+  const nextMonth = () =>{
+    if(month === 11){
+      setMonth(0)
+      setYear(year+1)
+    }else{
+      setMonth(month + 1)
+    }
+  }
+
   return (
     <div className={classes.app}>
       <Nav 
@@ -31,8 +50,8 @@ const App= ()=> {
         nav={classes.nav}
         year={year}        
         month={month}
-        setMonth={()=>this.setMonth()}
-        setYear={()=>this.setYear()}
+        previousMonth={()=>previousMonth()}
+        nextMonth={()=>nextMonth()}
       />
       <CalendarBoard 
         className={classes.board} 

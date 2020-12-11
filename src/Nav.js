@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     }
   });
 
-const Nav = ({nav,year,month})=>{
+const Nav = ({nav,year,month,previousMonth,nextMonth})=>{
     const classes = useStyles()
     console.log(month)
     return(
@@ -32,8 +32,8 @@ const Nav = ({nav,year,month})=>{
            <h2 className={classes.title}>
                カレンダー
            </h2>
-           <NavigateBeforeIcon className={classes.navIcon} />
-           <NavigateNextIcon className={classes.navIcon}/>           
+           <NavigateBeforeIcon className={classes.navIcon} onClick={()=> previousMonth()}/>
+           <NavigateNextIcon className={classes.navIcon} onClick={()=> nextMonth()}/>           
             <p className={classes.yearMonth}>{`${year}年${month+1}月`}</p>
        </div>
     )
