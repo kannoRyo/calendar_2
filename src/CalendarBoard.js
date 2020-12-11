@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, GridList , GridListTile} from '@material-ui/core';
-import {getCalendarHead, getCalendarBody, getCalendarTale, renderDates} from './func/calendarFormatFunction'
+import {renderDates} from './func/calendarFormatFunction'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,16 +20,14 @@ const useStyles = makeStyles((theme) => ({
         width: '14%',
         border: '1px solid #dbdbdb',
         textAlign: 'center',
-        fontSize:'12px',
+        fontSize:'11px',
         color:'#000',
         padding: '6px 0'
     }
   }));
 
-const CalendarBoard = ({board,setYear,setMonth,year,month})=>{
-    const classes = useStyles() 
-
-    
+const CalendarBoard = ({board,year,month})=>{
+    const classes = useStyles()
 
     const rows = [
         renderDates(year,month).splice(0,7),
